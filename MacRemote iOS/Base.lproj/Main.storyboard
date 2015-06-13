@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gqY-WS-VNa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ffk-Sz-OZs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="kuK-xY-mON">
+            <objects>
+                <navigationController id="ffk-Sz-OZs" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Il-3P-aeg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gqY-WS-VNa" kind="relationship" relationship="rootViewController" id="uXL-fU-n1r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kSJ-ld-eG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="658"/>
+        </scene>
+        <!--Remote Control-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MacRemote_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Remote Control" id="vXZ-lx-hvc" customClass="MRControlViewController" customModule="MacRemote_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,14 +32,43 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRm-or-lhH">
+                                <rect key="frame" x="16" y="72" width="187" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="187" id="Nx2-hm-Qfa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efO-f1-yj8">
+                                <rect key="frame" x="91" y="110" width="36" height="30"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickSendButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Z2j-Go-0xT"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sRm-or-lhH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="UA7-fx-O2r"/>
+                            <constraint firstItem="efO-f1-yj8" firstAttribute="top" secondItem="sRm-or-lhH" secondAttribute="bottom" constant="8" id="YG5-Na-lbY"/>
+                            <constraint firstItem="efO-f1-yj8" firstAttribute="centerX" secondItem="sRm-or-lhH" secondAttribute="centerX" constant="-0.5" id="ZGW-xb-sNY"/>
+                            <constraint firstItem="sRm-or-lhH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zFZ-2a-k2i"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="sRm-or-lhH" id="Hsj-vO-5vx"/>
+                        <outlet property="sendButton" destination="efO-f1-yj8" id="2M2-qs-Hao"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460" y="368"/>
+            <point key="canvasLocation" x="578" y="658"/>
         </scene>
-        <!--Service Table View Controller-->
+        <!--Mac Devices-->
         <scene sceneID="eEb-KN-VSS">
             <objects>
                 <tableViewController id="gqY-WS-VNa" customClass="MRServiceTableViewController" customModule="MacRemote_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,21 +77,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="serviceCell" id="vMY-JJ-AXW" customClass="MRServiceTableViewCell" customModule="MacRemote_iOS" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="serviceCell" rowHeight="80" id="vMY-JJ-AXW" customClass="MRServiceTableViewCell" customModule="MacRemote_iOS" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMY-JJ-AXW" id="oVl-fk-tJz">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4c-bO-Usd">
-                                            <rect key="frame" x="8" y="12" width="207" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4c-bO-Usd">
+                                            <rect key="frame" x="8" y="29" width="207" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="207" id="a8M-sh-Lms"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="a4c-bO-Usd" firstAttribute="leading" secondItem="oVl-fk-tJz" secondAttribute="leadingMargin" id="7Is-df-r4c"/>
+                                        <constraint firstAttribute="centerY" secondItem="a4c-bO-Usd" secondAttribute="centerY" id="crJ-wF-G7J"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="serviceNameLabel" destination="a4c-bO-Usd" id="3FF-at-HsY"/>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="Paq-8U-bvg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -54,10 +108,11 @@
                             <outlet property="delegate" destination="gqY-WS-VNa" id="dJa-pl-lIE"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Mac Devices" id="TLa-Kh-x4B"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aef-c4-Uhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460" y="1071"/>
+            <point key="canvasLocation" x="-126" y="658"/>
         </scene>
     </scenes>
 </document>

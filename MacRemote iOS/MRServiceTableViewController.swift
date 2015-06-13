@@ -23,7 +23,7 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
         
         self.services = []
         
-        self.remoteControlClient = MRRemoteControlClient()
+        self.remoteControlClient = MRRemoteControlClient.sharedClient
         self.remoteControlClient.delegate = self
         self.remoteControlClient.startSearch()
     }
@@ -46,6 +46,9 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     
     func remoteControlClientDidSendData(data: NSData, toService service: NSNetService, onSocket socket: GCDAsyncSocket) {
         println("Sent data: \(data)")
+        if let message = NSString(data: data, encoding: NSUTF8StringEncoding) {
+            println("Message: \(message)")
+        }
         println("Length: \(data.length)")
     }
     
@@ -61,7 +64,7 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.services.count
+        return self.services.count != 0 ? self.services.count : 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -69,11 +72,29 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
         
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: indexPath) as MRServiceTableViewCell
 
+        if self.services.count == 0 {
+            cell.serviceNameLabel.text = "(No service)"
+            
+            return cell
+        }
+        
         var service: NSNetService = self.services[indexPath.row]
         
         cell.serviceNameLabel.text = service.name
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80.0
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var service: NSNetService = self.services[indexPath.row]
+        
+        self.remoteControlClient.connectToService(service)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
 }

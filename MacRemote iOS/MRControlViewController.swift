@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MRControlViewController: UIViewController {
 
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var inputTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +23,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func didClickSendButton(sender: UIButton) {
+        if let data = self.inputTextField.text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            MRRemoteControlClient.sharedClient.send(data)
+        }
+    }
 
 }
 

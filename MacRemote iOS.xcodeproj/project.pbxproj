@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20E05CDE1B2B1A4A0073104B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05CDD1B2B1A4A0073104B /* AppDelegate.swift */; };
-		20E05CE01B2B1A4A0073104B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05CDF1B2B1A4A0073104B /* ViewController.swift */; };
+		20E05CE01B2B1A4A0073104B /* MRControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05CDF1B2B1A4A0073104B /* MRControlViewController.swift */; };
 		20E05CE31B2B1A4A0073104B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E05CE11B2B1A4A0073104B /* Main.storyboard */; };
 		20E05CE51B2B1A4A0073104B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E05CE41B2B1A4A0073104B /* Images.xcassets */; };
 		20E05CE81B2B1A4A0073104B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E05CE61B2B1A4A0073104B /* LaunchScreen.xib */; };
@@ -35,7 +35,7 @@
 		20E05CD81B2B1A4A0073104B /* MacRemote iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacRemote iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E05CDC1B2B1A4A0073104B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20E05CDD1B2B1A4A0073104B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20E05CDF1B2B1A4A0073104B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		20E05CDF1B2B1A4A0073104B /* MRControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRControlViewController.swift; sourceTree = "<group>"; };
 		20E05CE21B2B1A4A0073104B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20E05CE41B2B1A4A0073104B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20E05CE71B2B1A4A0073104B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		20E05D021B2B1C780073104B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				20E05CDF1B2B1A4A0073104B /* ViewController.swift */,
+				20E05CDF1B2B1A4A0073104B /* MRControlViewController.swift */,
 				20E05CFD1B2B1C070073104B /* MRServiceTableViewController.swift */,
 			);
 			name = ViewControllers;
@@ -318,7 +318,7 @@
 				20E05CFE1B2B1C070073104B /* MRServiceTableViewController.swift in Sources */,
 				20E05D051B2BD5350073104B /* MRRemoteControlClient.swift in Sources */,
 				20E05D0D1B2C05C70073104B /* MRServiceTableViewCell.swift in Sources */,
-				20E05CE01B2B1A4A0073104B /* ViewController.swift in Sources */,
+				20E05CE01B2B1A4A0073104B /* MRControlViewController.swift in Sources */,
 				20E05D071B2BDB1E0073104B /* Array+removeObject.swift in Sources */,
 				20E05CDE1B2B1A4A0073104B /* AppDelegate.swift in Sources */,
 			);

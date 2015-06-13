@@ -31,13 +31,20 @@ protocol MRRemoteControlClientDelegate {
 // MARK: - Client
 class MRRemoteControlClient: NSObject, NSNetServiceBrowserDelegate, NSNetServiceDelegate, GCDAsyncSocketDelegate {
     
+    class var sharedClient: MRRemoteControlClient {
+        struct Static {
+            static let client: MRRemoteControlClient = MRRemoteControlClient()
+        }
+        return Static.client
+    }
+    
     var delegate: MRRemoteControlClientDelegate!
     private var serviceBrowser: NSNetServiceBrowser!
     private(set) var connectedService: NSNetService?
     private(set) var services: Array<NSNetService>!
     private(set) var connectedSocket: GCDAsyncSocket?
     
-    override init() {
+    private override init() {
         super.init()
         
         self.services = []
@@ -59,6 +66,10 @@ class MRRemoteControlClient: NSObject, NSNetServiceBrowserDelegate, NSNetService
             self.serviceBrowser.stop()
             self.serviceBrowser.delegate = nil
             self.serviceBrowser = nil
+            
+            // FIXME: Disconnected
+            self.connectedSocket?.disconnect()
+            self.connectedService = nil
         }
     }
     
@@ -72,7 +83,9 @@ class MRRemoteControlClient: NSObject, NSNetServiceBrowserDelegate, NSNetService
         
         let addresses: Array = service.addresses!
         
-        if !(self.connectedSocket?.isConnected != nil) {
+        if let _connected = self.connectedSocket?.isConnected {
+            isConnected = self.connectedSocket!.isConnected
+        } else {
             // Initialize Socket
             self.connectedSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             
@@ -89,8 +102,6 @@ class MRRemoteControlClient: NSObject, NSNetServiceBrowserDelegate, NSNetService
                     println("Unable to connect to address.\nError \(error?) with user info \(error?.userInfo)")
                 }
             }
-        } else {
-            isConnected = self.connectedSocket!.isConnected
         }
         
         return isConnected
@@ -133,6 +144,14 @@ class MRRemoteControlClient: NSObject, NSNetServiceBrowserDelegate, NSNetService
     
     func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didRemoveService aNetService: NSNetService, moreComing: Bool) {
         println("Remove a service: \(aNetService.name)")
+        
+        // FIXME: Disconnected
+//        if self.connectedService == aNetService {
+//            self.connectedSocket?.disconnect()
+//            self.connectedService = nil
+//            
+//            UIApplication.sharedApplication().keyWindow?.rootViewController?.navigationController?.popToRootViewControllerAnimated(true)
+//        }
         
         self.services.removeObject(aNetService)
         if !moreComing {
