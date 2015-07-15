@@ -14,8 +14,6 @@
 		20E05CE81B2B1A4A0073104B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E05CE61B2B1A4A0073104B /* LaunchScreen.xib */; };
 		20E05CF41B2B1A4A0073104B /* MacRemote_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05CF31B2B1A4A0073104B /* MacRemote_iOSTests.swift */; };
 		20E05CFE1B2B1C070073104B /* MRServiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05CFD1B2B1C070073104B /* MRServiceTableViewController.swift */; };
-		20E05D051B2BD5350073104B /* MRRemoteControlClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05D041B2BD5350073104B /* MRRemoteControlClient.swift */; };
-		20E05D071B2BDB1E0073104B /* Array+removeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05D061B2BDB1E0073104B /* Array+removeObject.swift */; };
 		20E05D0D1B2C05C70073104B /* MRServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05D0C1B2C05C70073104B /* MRServiceTableViewCell.swift */; };
 		7D71D835FF2C413F80A0F20C /* Pods_MacRemote_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B0D128E626FFE14A8D8483 /* Pods_MacRemote_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -43,8 +41,6 @@
 		20E05CF21B2B1A4A0073104B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20E05CF31B2B1A4A0073104B /* MacRemote_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRemote_iOSTests.swift; sourceTree = "<group>"; };
 		20E05CFD1B2B1C070073104B /* MRServiceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRServiceTableViewController.swift; sourceTree = "<group>"; };
-		20E05D041B2BD5350073104B /* MRRemoteControlClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRRemoteControlClient.swift; sourceTree = "<group>"; };
-		20E05D061B2BDB1E0073104B /* Array+removeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+removeObject.swift"; sourceTree = "<group>"; };
 		20E05D0C1B2C05C70073104B /* MRServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRServiceTableViewCell.swift; sourceTree = "<group>"; };
 		2622E556AD3C0C18E5834DD6 /* Pods-MacRemote iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacRemote iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacRemote iOS/Pods-MacRemote iOS.release.xcconfig"; sourceTree = "<group>"; };
 		93B0D128E626FFE14A8D8483 /* Pods_MacRemote_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacRemote_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +65,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		205E07221B52B1A700E7F557 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		20E05CCF1B2B1A490073104B = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				20E05CDD1B2B1A4A0073104B /* AppDelegate.swift */,
-				20E05D061B2BDB1E0073104B /* Array+removeObject.swift */,
-				20E05D041B2BD5350073104B /* MRRemoteControlClient.swift */,
+				205E07221B52B1A700E7F557 /* Model */,
 				20E05D0B1B2C05900073104B /* View */,
 				20E05D021B2B1C780073104B /* ViewControllers */,
 				20E05CDB1B2B1A4A0073104B /* Supporting Files */,
@@ -316,10 +318,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				20E05CFE1B2B1C070073104B /* MRServiceTableViewController.swift in Sources */,
-				20E05D051B2BD5350073104B /* MRRemoteControlClient.swift in Sources */,
 				20E05D0D1B2C05C70073104B /* MRServiceTableViewCell.swift in Sources */,
 				20E05CE01B2B1A4A0073104B /* MRControlViewController.swift in Sources */,
-				20E05D071B2BDB1E0073104B /* Array+removeObject.swift in Sources */,
 				20E05CDE1B2B1A4A0073104B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

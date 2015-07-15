@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import MRFoundation
 import CocoaAsyncSocket
 
 class MRServiceTableViewController: UITableViewController, MRRemoteControlClientDelegate {
     
-    private var remoteControlClient: MRRemoteControlClient!
     private var services: Array<NSNetService>!
 
     // MARK: - Life Circle
@@ -23,9 +23,8 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
         
         self.services = []
         
-        self.remoteControlClient = MRRemoteControlClient.sharedClient
-        self.remoteControlClient.delegate = self
-        self.remoteControlClient.startSearch()
+        MRRemoteControlClient.sharedClient.delegate = self
+        MRRemoteControlClient.sharedClient.startSearch()
     }
     
     // MARK: - MRRemoteControlClientDelegate
@@ -92,7 +91,7 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var service: NSNetService = self.services[indexPath.row]
         
-        self.remoteControlClient.connectToService(service)
+        MRRemoteControlClient.sharedClient.connectToService(service)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

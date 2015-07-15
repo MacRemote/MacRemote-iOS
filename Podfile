@@ -4,7 +4,7 @@
 use_frameworks!
 
 target 'MacRemote iOS' do
-    pod 'CocoaAsyncSocket'
+    pod 'MRFoundation', :path => '../Remote Foundation/'
 end
 
 target 'MacRemote iOSTests' do
