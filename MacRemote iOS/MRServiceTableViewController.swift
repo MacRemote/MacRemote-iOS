@@ -24,12 +24,22 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
         self.services = []
         
         MRRemoteControlClient.sharedClient.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Start searching services
         MRRemoteControlClient.sharedClient.startSearch()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        // Stop searching services
+        MRRemoteControlClient.sharedClient.stopSearch()
     }
     
     // MARK: - MRRemoteControlClientDelegate
     
     func remoteControlClientDidChangeServices(services: Array<NSNetService>) {
+        println("Reload data")
         self.services = services
         
         self.tableView.reloadData()
@@ -43,11 +53,14 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
         println("Client connected to service (\(service.name)).")
     }
     
+    func remoteControlClientDidDisconnect() {
+        println("Client disconnect with server!")
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     func remoteControlClientDidSendData(data: NSData, toService service: NSNetService, onSocket socket: GCDAsyncSocket) {
         println("Sent data: \(data)")
-        if let message = NSString(data: data, encoding: NSUTF8StringEncoding) {
-            println("Message: \(message)")
-        }
         println("Length: \(data.length)")
     }
     
@@ -69,10 +82,11 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reuseId: String = "serviceCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: indexPath) as MRServiceTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: indexPath) as! MRServiceTableViewCell
 
         if self.services.count == 0 {
             cell.serviceNameLabel.text = "(No service)"
+            cell.userInteractionEnabled = false
             
             return cell
         }
@@ -80,6 +94,7 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
         var service: NSNetService = self.services[indexPath.row]
         
         cell.serviceNameLabel.text = service.name
+        cell.userInteractionEnabled = true
 
         return cell
     }
@@ -89,11 +104,18 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var service: NSNetService = self.services[indexPath.row]
-        
-        MRRemoteControlClient.sharedClient.connectToService(service)
-        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)
+        var service: NSNetService = self.services[indexPath!.row]
+        
+        if let vc = segue.destinationViewController as? MRControlViewController {
+            vc.service = service
+        }
     }
 
 }
