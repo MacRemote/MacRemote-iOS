@@ -1,5 +1,5 @@
 PODS:
-  - CocoaAsyncSocket (7.4.1)
+  - CocoaAsyncSocket (7.4.2)
   - MRFoundation (0.1):
     - CocoaAsyncSocket (~> 7.0)
 
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../Remote Foundation/"
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: 7cbf214b27f8e7f7574db6a3fd96352ffaed433d
+  CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
   MRFoundation: 38068d8a4ecb318be7949a8e30666a2f1b4cd3a5
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.39.0

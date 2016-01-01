@@ -15,7 +15,7 @@
 		20E05CF41B2B1A4A0073104B /* MacRemote_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05CF31B2B1A4A0073104B /* MacRemote_iOSTests.swift */; };
 		20E05CFE1B2B1C070073104B /* MRServiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05CFD1B2B1C070073104B /* MRServiceTableViewController.swift */; };
 		20E05D0D1B2C05C70073104B /* MRServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E05D0C1B2C05C70073104B /* MRServiceTableViewCell.swift */; };
-		7D71D835FF2C413F80A0F20C /* Pods_MacRemote_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B0D128E626FFE14A8D8483 /* Pods_MacRemote_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7D71D835FF2C413F80A0F20C /* Pods_MacRemote_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B0D128E626FFE14A8D8483 /* Pods_MacRemote_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +213,7 @@
 		20E05CD01B2B1A4A0073104B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Tom Hu";
 				TargetAttributes = {

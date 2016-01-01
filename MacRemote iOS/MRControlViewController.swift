@@ -21,8 +21,8 @@ class MRControlViewController: UIViewController {
     }
     
     deinit {
-        println("Deinitializing...")
-        println("Exit")
+        print("Deinitializing...")
+        print("Exit")
         MRRemoteControlClient.sharedClient.disconnect()
     }
 
