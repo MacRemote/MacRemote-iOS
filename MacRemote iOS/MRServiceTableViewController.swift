@@ -19,8 +19,6 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.clearsSelectionOnViewWillAppear = false
-        
         self.services = []
         
         MRRemoteControlClient.sharedClient.delegate = self
@@ -39,34 +37,34 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     // MARK: - MRRemoteControlClientDelegate
     
     func remoteControlClientDidChangeServices(services: Array<NSNetService>) {
-        println("Reload data")
+        print("Reload data")
         self.services = services
         
         self.tableView.reloadData()
     }
     
     func remoteControlClientWillConnectToService(service: NSNetService, onSocket socket: GCDAsyncSocket) {
-        println("Client will connect to service")
+        print("Client will connect to service")
     }
     
     func remoteControlClientDidConnectToService(service: NSNetService, onSocket socket: GCDAsyncSocket) {
-        println("Client connected to service (\(service.name)).")
+        print("Client connected to service (\(service.name)).")
     }
     
     func remoteControlClientDidDisconnect() {
-        println("Client disconnect with server!")
+        print("Client disconnect with server!")
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func remoteControlClientDidSendData(data: NSData, toService service: NSNetService, onSocket socket: GCDAsyncSocket) {
-        println("Sent data: \(data)")
-        println("Length: \(data.length)")
+        print("Sent data: \(data)")
+        print("Length: \(data.length)")
     }
     
     func remoteControlClientDidReceiveData(data: NSData, fromService service: NSNetService, onSocket socket: GCDAsyncSocket) {
-        println("Received data: \(data)")
-        println("Length: \(data.length)")
+        print("Received data: \(data)")
+        print("Length: \(data.length)")
     }
 
     // MARK: - Table View Data Source
