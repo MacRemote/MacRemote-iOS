@@ -8,7 +8,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   MRFoundation:
-    :path: "../Remote Foundation/"
+    :path: ../Remote Foundation/
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
@@ -16,4 +16,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0e166d4a44febf774c3f103c1829a50de2a71c44
 
-COCOAPODS: 1.0.0.beta.8
+COCOAPODS: 1.0.0

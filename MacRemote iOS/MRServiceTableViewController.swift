@@ -89,7 +89,7 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
             return cell
         }
         
-        var service: NSNetService = self.services[indexPath.row]
+        let service: NSNetService = self.services[indexPath.row]
         
         cell.serviceNameLabel.text = service.name
         cell.userInteractionEnabled = true
@@ -108,8 +108,8 @@ class MRServiceTableViewController: UITableViewController, MRRemoteControlClient
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)
-        var service: NSNetService = self.services[indexPath!.row]
+        let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)
+        let service: NSNetService = self.services[indexPath!.row]
         
         if let vc = segue.destinationViewController as? MRControlViewController {
             vc.service = service
